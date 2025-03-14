@@ -1,14 +1,14 @@
 <?php
 
     include_once 'conexion.php';
-    if(isset($_GET['Id'])){
-        $Id=(int) $_GET['Id];
-        $delete=$con->prepare('DELETE FROM cliente WHERE Id=:Id');
+    if(isset($_GET['id'])){
+        $id=(int) $_GET['id'];
+        $delete=$con->prepare('DELETE FROM cliente WHERE id=:id');
         $delete->execute(array(
-            ':Id'=>$Id
+            ':id'=>$id
         ));
         header('Location: index_cliente.php');
- }else{
-    header('Location: index_cliente.php');
- }
- ?>
+    }else{
+        header('Location: index_cliente.php');
+    }
+?>

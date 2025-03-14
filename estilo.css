@@ -1,41 +1,49 @@
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body {
-    font-family: 'Arial', sans-serif;
+
+body{
+    font-family: 'Arial',sans-serif;
     font-size: 16px;
-    background: #efefd0;
+    background: #EFEFD0;
 }
-a {
+
+a{
     text-decoration: none;
 }
-.contenedor {
+
+.contenedor{
     width: 80%;
     margin: 30px auto;
-    overflow: hidden; 
+    overflow: hidden;
+
 }
-h2 {
+
+h2{
     display: block;
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     font-size: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial',sans-serif;
     font-weight: bold;
     color: #555;
 }
-.barra_buscador {
+
+.barra_buscador{
     width: 100%;
     margin-top: 50px;
     margin-bottom: 10px;
 }
-.formulario {
-    display: flex; 
+
+.formulario{
+    display: flex;
     width: 100%;
     overflow: hidden;
 }
+
 form .input_text{
     width: 100%;
     border: 1px solid #ccc;
@@ -50,11 +58,12 @@ form .input_text{
     margin-right: 10px;
     outline: medium none;
 }
-select{
+
+selec{
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075)inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
     color: #848688;
     display: block;
     font-size: 14px;
@@ -64,7 +73,8 @@ select{
     margin-right: 10px;
     outline: medium none;
 }
-form .input_text :focus{
+
+form .input_text:focus{
     border: 1px solid #1b743c;
 }
 form .form-group{
@@ -73,9 +83,11 @@ form .form-group{
     flex-wrap: nowrap;
     justify-content: space-between;
 }
+
 form .form-group .input_text{
     max-width: 45% !important;
 }
+
 form .btn{
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -83,30 +95,38 @@ form .btn{
     color: #fff;
     display: block;
     font-size: 14px;
-    background: rgb(3, 113, 163);
     margin-bottom: 15px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin-right: 10px;
     outline: medium none;
     cursor: pointer;
 }
 .btn_nuevo{
-    float: right;
-    background: #1b743c;
+    float: left;
+    background: #1b743c !important;
 }
+
 .btn_group{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
+.btn_primary{
+    background: rgb(3, 113, 163);
+}
 .btn_danger{
     background: #8a0505 !important;
 }
+
+/* table */
 table{
     width: 100%;
     border-collapse: collapse;
-    background: #fc7323;
+}
+
+table .head{
+    background: #FC7323;
 }
 table .head td{
     color: #fff;
@@ -115,12 +135,7 @@ table .head td{
     font-size: 15px;
     text-align: center;
 }
-table tr td{
-    border: 1px solid #ccc; 
-    padding: 7px;
-    font-size: 14px;
-    color: black;
-}
+
 .btn_update{
     display: inline-block;
     font-size: 14px;
@@ -129,6 +144,7 @@ table tr td{
     border-radius: 5px;
     padding: 5px 10px;
 }
+
 .btn_delete{
     display: inline-block;
     font-size: 14px;
