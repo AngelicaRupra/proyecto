@@ -19,7 +19,7 @@
             WHERE cliente.nombre LIKE :campo OR cliente.id LIKE :campo
         ');
 
-        $buscar_text = "%" . $buscar_text . "%";
+        $buscar_text = "" . $buscar_text . "";
 
         $select_buscar->execute(array(':campo' => $buscar_text));
 
