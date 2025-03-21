@@ -7,7 +7,7 @@
 body{
     font-family: 'Arial',sans-serif;
     font-size: 16px;
-    background: #EFEFD0;
+    background: #efefd0;
 }
 
 a{
@@ -92,7 +92,7 @@ form .btn{
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    color: #fff;
+    color: #ccc;
     display: block;
     font-size: 14px;
     margin-bottom: 15px;
@@ -140,7 +140,7 @@ table .head td{
     display: inline-block;
     font-size: 14px;
     background: #1b743c;
-    color: #fff;
+    color: #912f2f;
     border-radius: 5px;
     padding: 5px 10px;
 }
@@ -149,7 +149,7 @@ table .head td{
     display: inline-block;
     font-size: 14px;
     background: #8a0505;
-    color: #fff;
+    color: #ccc;
     border-radius: 5px;
     padding: 5px 10px;
 }
