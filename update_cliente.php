@@ -1,9 +1,17 @@
 <?php
     include_once 'conexion.php';
-
+    if(isset($_GET['id'])){
+        $id=(int) $_GET['id'];
+        $consulta_cliente = $con->prepare('SELECT c.*, cd.nombre as ciudad FROM cliente as c JOIN ciudad as cd on c.id_ciudad=cd.id WHERE c.id=:id');
+        $consulta_cliente->execute(array(':id' => $id));
+        $clientes = $consulta_cliente->fetchAll();
+        //print_r($clientes[0] );
+    }
     $consulta_ciudades = $con->prepare('SELECT * FROM ciudad');
     $consulta_ciudades->execute();
     $ciudades = $consulta_ciudades->fetchAll();
+    //print_r($ciudades);
+    
 
     if(isset($_POST['guardar'])){
         $id=$_POST['id'];
@@ -16,8 +24,13 @@
         $consulta_check->execute(array(':id' => $id));
 
         if ($consulta_check->rowCount() > 0) {
-            
-            echo "<script> alert('El ID ya está registrado.');</script>";
+            if (!empty($id) && !empty($nombre) && !empty($apellido) && !empty($id_ciudad) && !empty($genero)) {
+                $consulta_insert = $con->prepare('UPDATE cliente SET nombre=:nombre, apellido=:apellido, id_ciudad=:id_ciudad, genero=:genero WHERE id=:id');
+                $consulta_insert->execute(array(':id' => $id, ':nombre' => $nombre, ':apellido' => $apellido, ':id_ciudad' => $id_ciudad, ':genero' => $genero));
+                header('Location: index_cliente.php');
+            } else {
+                echo "<script> alert('El ID ya está registrado.');</script>";
+            }
         } else {
             
             if (!empty($id) && !empty($nombre) && !empty($apellido) && !empty($id_ciudad) && !empty($genero)) {
@@ -44,16 +57,21 @@
         <h2>Crear Cliente</h2>
         <form action="" method="post">
             <div class="form-group">
-                <input type="text" name="id" placeholder="documento" class="input_text">
-                <input type="text" name="nombre" placeholder="Nombre" class="input_text">
+                <input type="text" name="id" placeholder="documento" class="input_text" value="<?php echo $clientes[0]['id']; ?>">
+                <input type="text" name="nombre" placeholder="Nombre" class="input_text" value=<?php echo $clientes[0]['nombre']; ?>>
             </div>
             <div class="form-group">
-                <input type="text" name="apellido" placeholder="apellido" class="input_text">
-                <select name="id_ciudad" id="id_ciudad" class="input_text">
-                    <option value="">Seleccionar Ciudad</option>
-                    <?php foreach ($ciudades as $ciudad): ?>
-                        <option value="<?php echo $ciudad['id']; ?>"><?php echo $ciudad['nombre']; ?></option>
-                    <?php endforeach; ?>
+                <input type="text" name="apellido" placeholder="apellido" class="input_text" value=<?php echo $clientes[0]['apellido']; ?>>
+                <select name="id_ciudad" id="id_ciudad" class="input_text">                    
+                    <?php foreach ($ciudades as $ciudad):
+                        print_r($ciudad) ;
+                        if ($clientes[0]['ciudad']!=$ciudad['nombre']){
+                            echo '<option value="' . $clientes[0]['id_ciudad'] . '">' . $ciudad['nombre'] . '</option>';
+                        } else {
+                            echo '<option value="' . $clientes[0]['id_ciudad'] . '" selected>' . $ciudad['nombre'] . '</option>';
+                        }
+                        endforeach;
+                    ?>
                 </select>
             </div>
             <div class="form-group">
